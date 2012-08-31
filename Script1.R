@@ -97,6 +97,10 @@ label(sus$ETNIA) <- "ETNIA???"
 label(sus$ARQUIVO) <- "ARQUIVO???"
 
 ## Introduction
-describe(sus, exclude.missing=FALSE)
+describe(sus, exclude.missing=TRUE)
+
+#A description of missing values is provided in the Figure below, where missing values are presented in yellow.
+library(vmv)
+tablemissing(sus)
 View(sus)
 
