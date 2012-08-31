@@ -104,3 +104,6 @@ library(vmv)
 tablemissing(sus)
 View(sus)
 
+
+
+
