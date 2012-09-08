@@ -1,4 +1,4 @@
-# Data quality and exploratory graphical analysis report for Big Data Analysis Project
+# Relatório de qualidade de dados e análise exploratória gráfoca para o banco de dados do SUS
 
 Elias Carvalho ecacarva@gmail.com
 Adelia Batilana adeliabatilana@gmail.com
@@ -8,6 +8,7 @@ Ricardo Pietrobon, MD, PhD rpietro@duke.edu
 library(Hmisc)
 library(ggplot2)
 library(VIM)
+
 # Le arquivo csv exportado do MySQL
 sus <- read.csv("c:/sus/sus5000rand.csv")
 #sus <- read.csv("/Users/rpietro/Google Drive/R/nonpublicdata_publications/SUS/sus5000rand.csv")
@@ -97,40 +98,30 @@ label(sus$REGCT) <- "REGCT???"
 label(sus$RACA_COR) <- "RACA_COR???"
 label(sus$ETNIA) <- "ETNIA???"
 label(sus$ARQUIVO) <- "ARQUIVO???"
+```
 
 ## Introduction
-The main objective of this report is to provide a 24/7 snapshop at the data quality behind the HPV Open Data Collection Project. This includes not only the original data set collected under Dr. Xavier in Maceio, Brazil, but also any additional data sets brought in from other registries, prospective studies, as well as Linked Open Data sources.
+O principal objetivo deste relatório é fornecer informações sobre o banco de dados SUS
+The main objective of this report is to provide ....
+Detalhes metodológicos sobre este projeto podem ser encontrados em no site [Big Data Analises]
 
-Methodological details about the study can be found at [HPV Open Data Collection Project](site)
-
-Below is a full list of variables along with their class (variable type according to the R language) and alternative responses. Most of the variable names should be intuitive, but a full dictionary is also described below:
-
-
-```{r, echo=FALSE, results='hide', warning=FALSE, message=FALSE }
-describe(sus, exclude.missing=FALSE)
-```
-A description of missing values is provided in the Figure below, where missing values are presented in yellow.
-```{r}
-library(vmv)
-tablemissing(sus)
-```
-Below is an application of the MINE (maximal Information-based Nonparametric Exploration) algorithm from the Science article (Detecting Novel Association in Large Data Sets)[http://www.sciencemag.org/content/334/6062/1518.abstract?ijkey=cRCIlh2G7AjiA&keytype=ref&siteid=sci]. See also (http://www.exploredata.net/)[http://www.exploreda ta.net/]
+Abaixo está uma lista completa das variáveis, juntamente com a sua classe (tipo variável de acordo com a linguagem R) e respostas alternativas. A maioria dos nomes das variáveis devem ser intuitivos, mas um dicionário de dados é descrito a seguir:
 
 ```{r, echo=FALSE, warning=FALSE }
-describe(hpv, exclude.missing=FALSE)
+describe(sus, exclude.missing=FALSE)
 ```
 
-A description of missing values is provided in the Figure below, where missing values are presented in yellow.
+Uma descrição de valores missing (representados em amarelo) são fornecidos na Figura abaixo
+
 ```{r}
 library(vmv)
 tablemissing(sus)
 ```
-Below is an application of the MINE (maximal Information-based Nonparametric Exploration) algorithm from the Science article (Detecting Novel Association in Large Data Sets)[http://www.sciencemag.org/content/334/6062/1518.abstract?ijkey=cRCIlh2G7AjiA&keytype=ref&siteid=sci]. See also (http://www.exploredata.net/)[http://www.exploredata.net/]
+Abaixo se encontra uma aplicação do MINE (maximal Information-based Nonparametric Exploration) algoritmo do Science article (Detecting Novel Association in Large Data Sets)[http://www.sciencemag.org/content/334/6062/1518.abstract?ijkey=cRCIlh2G7AjiA&keytype=ref&siteid=sci]. Veja também (http://www.exploredata.net/)[http://www.exploredata.net/]
 
 
 ```{r}
 source("http://www.exploredata.net/ftp/MINE.r")
-# MINE("/Users/rpietro/Google Drive/R/nonpublicdata_publications/HPV/sus5000rand.csv","all.pairs")
+#MINE("/Users/rpietro/Google Drive/R/nonpublicdata_publications/HPV/hpv.csv","all.pairs")
 MINE("c:/sus/sus5000rand.csv","all.pairs")
-
 ```
